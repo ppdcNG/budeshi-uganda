@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>CSO</title>
+    <link rel="shortcut icon" href="./favicon.ico.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/uikit.min.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <script src="../js/jquery.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="../js/uikit.min.js"></script>
+    <script src="../js/uikit-icons.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Stint+Ultra+Expanded" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Mogra|Pangolin|Quicksand|Secular+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Fascinate+Inline|Patua+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <nav class="uk-navbar-container uk-navbar-transparent top" uk-sticky uk-navbar>
+
+        <div class="uk-navbar-center uk-light">
+
+            <div class="uk-navbar-center-left">
+                <div>
+                    <ul class="uk-navbar-nav">
+                        <li>
+                            <a href="#" class="uk-button-text">Home</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img class='smaller-logo' src='../images/budeshi-logo.png' width="25%">
+            </a>
+            <div class="uk-navbar-center-right">
+                <div>
+                    <ul class="uk-navbar-nav">
+                        <li>
+                            <a href="#" class="uk-button-text">Export Data</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li>
+                                        <a href="#">Json</a>
+                                    </li>
+
+                                    <li class="uk-nav-divider"></li>
+                                    <li>
+                                        <a href="#">Download CSV</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="uk-active">
+                            <a href="#" class="uk-button-text">CSO</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <div class="uk-padding-large">
+        <div class="uk-width-large uk-align-center">
+            <div class="uk-card uk-card-default uk-card-large uk-card-body uk-padding-remove">
+                <div class="uk-grid-collapse uk-width-1-1" uk-switcher="animation: uk-animation-fade" uk-grid>
+                    <button class="uk-button uk-button-default uk-width-1-2" type="button">LOGIN</button>
+                    <button class="uk-button uk-button-default uk-width-1-2" type="button">REGISTER</button>
+
+                </div>
+
+                <ul class="uk-switcher uk-margin uk-padding-small">
+                    <li>
+                        <form>
+
+                            <div class="uk-margin uk-width-1-1">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                    <input class="uk-input" type="text">
+                                </div>
+                            </div>
+
+                            <div class="uk-margin uk-width-1-1">
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                                    <input class="uk-input" type="text">
+                                </div>
+                            </div>
+                            <div class="uk-margin uk-width-1-1">
+
+                                <button class="uk-button uk-button-primary uk-border-rounded uk-width-1-1">login</button>
+
+                            </div>
+
+                        </form>
+                        <div class="uk-margin uk-width-1-1">
+
+                                <a class="uk-width-1-1">Forgot password</a>
+
+                            </div>
+
+                    </li>
+                    <li>
+                        <form>
+                            <fieldset class="uk-fieldset">
+
+                                <legend class="uk-legend">General</legend>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="Legal Name">
+                                </div>
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="Registration ID">
+                                </div>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="Website">
+                                </div>
+
+
+
+
+                            </fieldset>
+                            <fieldset class="uk-fieldset">
+
+                                <legend class="uk-legend">Address</legend>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="Street Address">
+                                </div>
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="Locality">
+                                </div>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="Region">
+                                </div>
+                                <div class="uk-margin">
+                                    <select class="uk-select">
+                                        <option disabled selected>Country</option>
+                                        <option>Uganda</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                            <fieldset class="uk-fieldset">
+
+                                <legend class="uk-legend">Contact Point</legend>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="Name">
+                                </div>
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="Email">
+                                </div>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="Telephone">
+                                </div>
+
+                                <div class="uk-margin">
+                                    <input class="uk-input" type="text" placeholder="URL">
+                                </div>
+                                <div class="uk-margin uk-width-1-1">
+
+                                    <button class="uk-button uk-button-primary uk-border-rounded uk-width-1-1" uk-toggle="target: #create-login">Submit</button>
+
+                                </div>
+
+                            </fieldset>
+                        </form>
+                    </li>
+                    
+
+
+
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+<!-- This is the modal -->
+<div id="create-login" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">Create Log in Details</h2>
+        <div class="uk-width-large uk-margin uk-align-center">
+                <div class="uk-card uk-card-default uk-card-large uk-card-body">
+                        <form>
+
+                                <div class="uk-margin uk-width-1-1">
+                                    <div class="uk-inline uk-width-1-1">
+                                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                        <input class="uk-input" type="text" placeholder="Enter User Name">
+                                    </div>
+                                </div>
+    
+                                <div class="uk-margin uk-width-1-1">
+                                    <div class="uk-inline uk-width-1-1">
+                                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                                        <input class="uk-input" type="text" placeholder="Enter Password">
+                                    </div>
+                                </div>
+                                
+                                <div class="uk-margin uk-width-1-1">
+                                        <div class="uk-inline uk-width-1-1">
+                                            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                                            <input class="uk-input" type="text" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+                                <div class="uk-margin uk-width-1-1">
+    
+                                    <button class="uk-button uk-button-primary uk-border-rounded uk-width-1-1">login</button>
+    
+                                </div>
+    
+                            </form>
+                    </div>
+                    </div>
+        </div>
+    </div>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

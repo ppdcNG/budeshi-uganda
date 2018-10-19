@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html style='width: 100%'>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Manage Institution</title>
+    <link rel="stylesheet" href="../css/uikit.min.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/jquery.js"></script>
+    
+    <script src="../js/jquery.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="../js/uikit.min.js"></script>
+    <script src="../js/uikit-icons.min.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+
+<body class='home-page'>
+    <!-- nav bar -->
+    <nav class="uk-navbar-container uk-margin top" uk-navbar>
+        <div class="uk-navbar-left">
+
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img src='../images/budeshi.png' / width='50'>
+            </a>
+
+        </div>
+        <div class="uk-navbar-center">
+            <div class="uk-navbar-item"></div>
+        </div>
+        <div class="uk-navbar-right">
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#add-project" title="Create a New Project" uk-tooltip="pos: bottom" uk-toggle>
+                        <span class="uk-margin-small-right" uk-icon="icon: plus"></span>
+                    </a>
+                    <!-- Add Project Modal -->
+                    <div id="add-project" uk-modal>
+                        <div class="uk-modal-dialog">
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <div class="uk-modal-header">
+                                <h2 class="uk-modal-title">Create a New Project </h2>
+                            </div>
+                            <div class="uk-modal-body">
+                                <form>
+                                    <fieldset class="uk-fieldset">
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="title">Title</label>
+                                            <input class="uk-input" type="text" placeholder="E.g " id='title' name='title' title="The name of the project that through which this contracting process is funded (if applicable)"
+                                                uk-tooltip="pos: bottom" reqiured>
+                                        </div>
+                                        <div class="uk-width-1-1 uk-margin">
+                                            <label class="uk-form-label" for="description">Description</label>
+                                            <textarea class="uk-textarea" rows="3" placeholder="" title="A summary description of the project." uk-tooltip="pos: bottom"
+                                                reqiured></textarea>
+                                        </div>
+                                        <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                            <div>
+                                                <div class="uk-margin">
+                                                    <label class="uk-form-label" for="location">Location</label>
+                                                    <input class="uk-input" type="text" placeholder="E.g " id='location' name='location' title="Location the projected will be carried out"
+                                                        uk-tooltip="pos: bottom" reqiured>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="uk-margin">
+                                                    <label class="uk-form-label" for="title">Year</label>
+                                                    <select class="uk-select" name='year' title="The year this project was initiated" uk-tooltip="pos: bottom">
+                                                        <option value='' selected disabled>Select year</option>
+                                                        <option value='2014'>2014</option>
+                                                        <option value='2015'>2015</option>
+                                                        <option value='2016'>2016</option>
+                                                        <option value='2017'>2017</option>
+                                                        <option value='2018'>2018</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary uk-modal-close" id='new-project-saved' data-message="<span uk-icon='icon: check'></span>Project Successfully Added"
+                                    data-status="success" type="button">Save</button>
+                                <!-- Notification for saving new project -->
+                                <script>
+                                    jQuery('#new-project-saved').on('click', function () {
+                                        UIkit.notification($(this).data());
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- xxx -->
+                </li>
+            </ul>
+
+            <ul class="uk-navbar-nav">
+                <li class="uk-active">
+                    <a href="#">
+                        <span class="uk-margin-small-right" uk-icon="icon: user"></span>
+                    </a>
+                    <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active">
+                                <a href="#">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div>
+            <div class="uk-position-relative uk-light" uk-slider="center: true; autoplay: true; ">
+
+                <ul class="uk-slider-items uk-grid">
+                    <li class="uk-width-1-1 uk-transition-toggle">
+                        <div class="uk-panel">
+                            
+                                <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light">
+                                        
+                                        <p class="uk-text-center" >To add a report to existing project, Use the search panel on the left to search for projects. Then click on edit on the first column of the row to add report.</p>
+                                        <p  class="uk-text-center">
+                                            To add report to non-existing projects, you must first of all create project by clicking the <span uk-icon="plus"></span> button on the nav bar top right corner of the page and then enter details.
+                                        </p>
+                                    </div>
+
+                        </div>
+                    </li>
+
+
+                </ul>
+
+                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+            </div>
+        </div>
+
+    <div class="uk-child-width-1-1" uk-grid>
+            
+            <div>
+                <div class="uk-grid-collapse" id="stop" uk-grid>
+                    <div class="uk-width-1-3@s uk-padding" style='max-width: 400px' uk-height-viewport="expand: true">
+                        <div>
+                            <h3 class="comforta">Find Projects</h3>
+                            <div class="uk-grid-small uk-child-width-1-1" uk-grid>
+
+                                <div class="uk-padding-small">
+                                    <div class="uk-grid-small" uk-grid>
+                                        <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                            <img class="uk-transition-scale-up uk-transition-opaque" src="../images/home.png" />
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <div class="uk-margin" style="max-width: 252px">
+                                                <select id='select-mda' class="uk-select" name='organization' style='width: 100%' multiple='multiple'>
+                                                                 <option value="dc">Universal Basic Education Commission</option>
+                                                                 <option value="le">National Primary Health Care Development Centre</option>
+                                                                 <option value="mj">Bureau of Public Procurement</option>
+                                                                 <option value="cos">Public and Private Development Centre</option>
+                                                                 <option value="ec">Bureau of Public Service Reforms</option>
+                                                                 <option value="jb">Customer Protection Council</option>
+                                                                 </select>
+                                                <script type="text/javascript">
+                                                    $('#select-mda').select2({
+                                                        placeholder: "Procuring Entity"
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                        <!-- <hr class="uk-flex uk-flex-center" style="border-width: 3px"> -->
+                                    </div>
+                                </div>
+
+
+                                <div class="uk-padding-small">
+                                    <div class="uk-grid-small " uk-grid>
+                                        <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                            <img class="uk-transition-scale-up uk-transition-opaque" src="../images/uganda_icon.png" />
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <div class="uk-margin" style="max-width: 252px">
+                                                <select class="uk-select" id='state' multiple='multiple' style='width: 100%'>
+                                     <option value='abia'>Abia</option>
+                                     <option value='adamawa'>Adamawa</option>
+                                     <option value='anambra'>Anambra</option>
+                                     <option value='akwaibom'>Akwa Ibom</option>
+                                     <option value='bauchi'>Bauchi</option>
+                                     <option value='bayelsa'>Bayelsa</option>
+                                     <option value='benue'>Benue</option>
+                                     <option value='Borno'>Borno</option>
+                                     <option value='crossriver'>Cross River</option>
+                                     <option value='delta'>Delta</option>
+                                     <option value='ebonyi'>Ebonyi</option>
+                                     <option value='enugu'>Enugu</option>
+                                     <option value='edo'>Edo</option>
+                                     <option value='ekiti'>Ekiti</option>
+                                     <option value='gombe'>Gombe</option>
+                                     <option value='imo'>Imo</option>
+                                     <option value='jigawa'>Jigawa</option>
+                                     <option value='kaduna'>Kaduna</option>
+                                     <option value='kano'>Kano</option>
+                                     <option value='katsina'>Katsina</option>
+                                     <option value='kebbi'>Kebbi</option>
+                                     <option value='kogi'>Kogi</option>
+                                     <option value='kwara'>Kwara</option>
+                                     <option value='lagos'>Lagos</option>
+                                     <option value='nasarawa'>Nasarawa</option>
+                                     <option value='niger'>Niger</option>
+                                     <option value='ogun'>Ogun</option>
+                                     <option value='ondo'>Ondo</option>
+                                     <option value='osun'>Osun</option>
+                                     <option value='oyo'>Oyo</option>
+                                     <option value='plateau'>Plateau</option>
+                                     <option value='rivers'>Rivers</option>
+                                     <option value='sokoto'>Sokoto</option>
+                                     <option value='taraba'>Taraba</option>
+                                     <option value='yobe'>Yobe</option>
+                                     <option value='zamfara'>Zamfara</option>
+                                     <option value='fct'>Federal Capital Territory (FCT)</option>
+                                     </select>
+                                                <script type="text/javascript">
+                                                    $('#state').select2({
+                                                        placeholder: "Locations"
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-padding-small">
+                                    <div class="uk-grid-small " uk-grid>
+                                        <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                            <img class="uk-transition-scale-up uk-transition-opaque" src="../images/year.png" />
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <div class="uk-margin" style="max-width: 252px">
+                                                <select id='select-year' class="uk-select" name='organization' style='width: 100%' multiple='multiple'>
+                                                 <option value="2014">20154</option>
+                                                 <option value="2015">2015</option>
+                                                 <option value="2016">2016</option>
+                                                 <option value="2017">2017</option>
+                                                 <option value="2018">2018</option>
+                                                 <option value="2019">2019</option>
+                                                 <option value="2020">2020</option>
+                                                 <option value="2021">2021</option>
+                                                 </select>
+                                                <script type="text/javascript">
+                                                    $('#select-year').select2({
+                                                        placeholder: "Project Years"
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="uk-padding-small">
+                                    <div class="uk-grid-small " uk-grid>
+                                        <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                            <img class="uk-transition-scale-up uk-transition-opaque" src="../images/architect.png" />
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <div class="uk-margin" style="max-width: 252px">
+                                                <select id='select-contr' name='organization' style='width: 100%' multiple='multiple'>
+                                                        <option value="dc">Dangote Cement</option>
+                                                        <option value="le">Levi</option>
+                                                        <option value="mj">Marc Jacobs</option>
+                                                        <option value="cos">Coscharis Motors</option>
+                                                        <option value="ec">Emeka Custructions</option>
+                                                        <option value="jb">Julius Berger</option>
+                                                        </select>
+                                                <script type="text/javascript">
+                                                    $('#select-contr').select2({
+                                                        placeholder: "Contractors"
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="uk-padding-small">
+                                    <div class="uk-grid-small" uk-grid>
+                                        <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                            <img class="uk-transition-scale-up uk-transition-opaque" src="../images/toolbox.png" />
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <div class="uk-margin" style="max-width: 252px">
+                                                <select id='proc-cat' name='status' style='width: 100%' multiple='multiple'>
+                <option value="le">Goods</option>
+                <option value="mj">Works</option>
+                <option value="ca">Services</option>
+                <!-- <option value="cos">Direct</option> -->
+                </select>
+                                                <script type="text/javascript">
+                                                    $('#proc-cat').select2({
+                                                        placeholder: "Procurement Category"
+                                                        // dropdownParent: $('#find-project')
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-padding-small">
+                                    <div class="uk-grid-small" uk-grid>
+                                        <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                            <img class="uk-transition-scale-up uk-transition-opaque" src="../images/status.png" />
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <div class="uk-margin" style="max-width: 252px">
+                                                <select id='proc-method' name='status' style='width: 100%' multiple='multiple'>
+                    <option value="le">Open</option>
+                    <option value="mj">Selective</option>
+                    <option value="ca">Limited</option>
+                    <option value="cos">Direct</option>
+                    </select>
+                                                <script type="text/javascript">
+                                                    $('#proc-method').select2({
+                                                        placeholder: "Procurement Method"
+                                                        // dropdownParent: $('#find-project')
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="uk-padding-small">
+                                    <div class="uk-grid-small " uk-grid>
+                                        <div class="uk-inline-clip uk-transition-toggle uk-width-auto" tabindex="0">
+                                            <img class="uk-transition-scale-up uk-transition-opaque" src="../images/inspect.png" width="120%" />
+                                        </div>
+                                        <div class="uk-width-expand">
+                                            <div class="uk-margin" style="max-width: 252px">
+                                                <input class="uk-input uk-border-rounded" type="text" placeholder="Search Title" style="border: 1px solid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-width-expand@s  uk-padding ">
+                            <div>
+                                    <table class="uk-table uk-table-hover uk-table-divider">
+                                        <thead>
+                                            <tr>
+                                                <th>Edit</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Published</th>
+                                                <th>Location</th>
+                                                <th>Year</th>
+                                                
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tbody>
+                                                <tr>
+                                                    <td><a href="#edit-project" title="Edit Project" uk-tooltip="pos: bottom" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: file-edit"></span></a></td>
+                                                    <td>Construction of 3 blocks of classroom</td>
+                                                    <td>LOT 21 Construction of 3 blocks of classroom</td>
+                                                    <td>No</td>
+                                                    <td>Abia</td>
+                                                    <td>2014</td>
+
+                                                    <td><a href="#delete-project" title="Delete Project" uk-tooltip="pos: bottom" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: trash"></span></a></td>
+                                                </tr>
+                                            </tbody>
+                                    </table>
+                                    <!--- Delete Project -->
+                                    <div id="delete-project" class="uk-flex-top" uk-modal>
+                                        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                                            <p>Are you sure you want to delete project??</p>
+                                            <div class="uk-modal-footer uk-text-right">
+                                                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                                <button class="uk-button uk-button-primary uk-modal-close" type="button" id='delete-project-not' data-message="<span uk-icon='icon: check'></span>Project Successfully Deleted"
+                                                    data-status="success">Yes</button>
+                                                <!-- Notification for deleting Institution -->
+                                                <script>
+                                                    jQuery('#delete-project-not').on('click', function () {
+                                                        UIkit.notification($(this).data());
+                                                    });
+                                                </script>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- xxx -->
+                                    <!-- Edit Project Modal -->
+                                    <div id="edit-project" uk-modal>
+                                        <div class="uk-modal-dialog">
+                                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                                            <div class="uk-modal-header">
+                                                <h2 class="uk-modal-title">Edit Project </h2>
+                                            </div>
+                                            <div class="uk-modal-body">
+                                              <form>
+                                                  <fieldset class="uk-fieldset">
+                                                      <div class="uk-width-1-1 uk-margin">
+                                                          <label class="uk-form-label" for="title">Title</label>
+                                                          <input class="uk-input" type="text" placeholder="E.g " id='title' name='title' title="The name of the project that through which this contracting process is funded (if applicable)" uk-tooltip="pos: bottom" reqiured>
+                                                      </div>
+                                                      <div class="uk-width-1-1 uk-margin">
+                                                          <label class="uk-form-label" for="description">Description</label>
+                                                          <textarea class="uk-textarea" rows="3" placeholder="" title="A summary description of the project." uk-tooltip="pos: bottom" reqiured></textarea>
+                                                      </div>
+                                                      <div class='uk-grid-small uk-child-width-1-2' uk-grid>
+                                                          <div>
+                                                            <div class="uk-margin">
+                                                                <label class="uk-form-label" for="location">Location</label>
+                                                                <input class="uk-input" type="text" placeholder="E.g " id='location' name='location' title="Location the projected will be carried out" uk-tooltip="pos: bottom" reqiured>
+                                                            </div>
+                                                          </div>
+                                                          <div>
+                                                              <div class="uk-margin">
+                                                                  <label class="uk-form-label" for="title">Year</label>
+                                                                  <select class="uk-select" name='year' title="The year this project was initiated" uk-tooltip="pos: bottom">
+                                                                    <option value=''selected disabled>Select year</option>
+                                                                    <option value='2014'>2014</option>
+                                                                    <option value='2015'>2015</option>
+                                                                    <option value='2016'>2016</option>
+                                                                    <option value='2017'>2017</option>
+                                                                    <option value='2018'>2018</option>
+                                                                  </select>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </fieldset>
+                                              </form>
+                                            </div>
+                                            <div class="uk-modal-footer uk-text-right">
+                                                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                                <button class="uk-button uk-button-primary uk-modal-close" id='edit-project-saved'  data-message="<span uk-icon='icon: check'></span>Edit Successfully Saved" type="button">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Notification for saving edit to project -->
+                                    <script>
+                                        jQuery('#edit-project-saved').on('click', function () {
+                                            UIkit.notification($(this).data());
+                                        });
+                                    </script>
+                                    <!-- xxx -->
+                                    <!-- View Releases Modal -->
+                                    <div id="view-releases" uk-modal>
+                                <div class="uk-modal-dialog">
+                                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                                    <div class="uk-modal-header">
+                                        <h2 class="uk-modal-title">Releases <a href="#add-release"
+                                           title="Add Release" uk-tooltip="pos: bottom" uk-toggle><span class="uk-margin-small-right" uk-icon="icon: plus"></span></a></h2>
+                                    </div>
+                                    <div class="uk-modal-body">
+                                      <div class='uk-width-auto'>
+                                        <ul class="uk-list uk-list-large uk-list-divider">
+                                            <li><a href="#edit-release" title="Edit Release" uk-tooltip="pos: bottom"><span class="uk-margin-small-right uk-float-left" uk-icon="icon: file-edit"></span></a>Planning <a class="uk-float-right" href='#delete-release' uk-toggle id='delete-release-butt' title="Delete Release" uk-tooltip="pos: bottom" uk-icon="icon: trash"></a>
+                                                                <!--- Delete relese -->
+                                                                <div id="delete-release" class="uk-flex-top" uk-modal>
+                                                                    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                                                                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                                        <p>Are you sure you want to delete release??</p>
+                                                                        <div class="uk-modal-footer uk-text-right">
+                                                                            <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                                                            <button class="uk-button uk-button-primary uk-modal-close" type="button" id='delete-release-not' data-message="<span uk-icon='icon: check'></span>Release Successfully Deleted"
+                                                                                data-status="success">Yes</button>
+                                                                            <!-- Notification for deleting release -->
+                                                                            <script>
+                                                                                jQuery('#delete-release-not').on('click', function () {
+                                                                                    UIkit.notification($(this).data());
+                                                                                });
+                                                                            </script>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- xxx -->
+                                                              </li>
+                                            <li><a href="#edit-release" title="Edit Release" uk-tooltip="pos: bottom"><span class="uk-margin-small-right uk-float-left" uk-icon="icon: file-edit"></span></a>Tender <a class="uk-float-right" href='#delete-release' uk-toggle id='delete-release-butt' title="Delete Release" uk-tooltip="pos: bottom" uk-icon="icon: trash"></a></li>
+                                            <li><a href="#edit-release" title="Edit Release" uk-tooltip="pos: bottom"><span class="uk-margin-small-right uk-float-left" uk-icon="icon: file-edit"></span></a>Award <a class="uk-float-right" href='#delete-release' uk-toggle id='delete-release-butt' title="Delete Release" uk-tooltip="pos: bottom" uk-icon="icon: trash"></a></li>
+                                        </ul>
+                                    </div>
+                                    </div>
+                                    <div class="uk-modal-footer uk-text-right">
+                                        <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                        <button class="uk-button uk-button-primary" type="button">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- xxx -->
+                            <!-- Add Release Modal -->
+                            <div id="add-release" uk-modal>
+                            <div class="uk-modal-dialog">
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <div class="uk-modal-header">
+                                <h2 class="uk-modal-title">Select Release</h2>
+                            </div>
+                            <div class="uk-modal-body">
+                              <div>
+                                  <div class="uk-margin uk-width-1-1">
+                                      <select class="uk-select" name='year'>
+                                        <option value='planning'>Planning</option>
+                                        <option value='tender'>Tender (Initiation)</option>
+                                        <option value='award'>Award</option>
+                                        <option value='contract'>Contract</option>
+                                        <option value='implementation'>Implementation</option>
+                                      </select>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close uk-float-left" type="button">Cancel</button>
+                                <button class="uk-button uk-button-primary" type="button">Save</button>
+                            </div>
+                            </div>
+                            </div>
+                            <!-- xxx -->
+                                </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+
+       
+     
+        </div>
+
+        <div id="view-summaryb" class="uk-modal-container" uk-modal>
+                <div class="uk-modal-dialog">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <div class="uk-modal-header top">
+                        <p class='uk-light'>Project summary: </p>
+                        <h5 class='uk-text-warning uk-display-inline'>Construction of 2 classroom blocks in Umunna Bende LGA, Abia State</h5>
+                        <div class='uk-display-block uk-flex uk-flex-center uk-text-center'>
+                            <div class='uk-grid-small uk-child-width-1-1' uk-grid>
+                                <div class='uk-float-left'>
+                                    <a href="" class="" uk-icon="icon: comment" title="Click to give feedback on the project" uk-tooltip="pos: bottom" uk-toggle="target: #feedback-form"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-modal-body">
+                        <div class='uk-grid-small uk-child-width-1-2@s' uk-grid>
+                            <div>
+                                <div class='uk-grid-collapse uk-child-width-1-1' uk-grid>
+                                    <div>
+                                        <div class='red'>
+                                            <h5 class='uk-text-bold'>Planning</h5>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class='uk-grid-collapse uk-child-width-1-1@s' uk-grid>
+                                            <div>
+                                                <div class="uk-form-horizontal">
+                                                    <label class="uk-form-label" for="form-stacked-text">Budget Amount:</label>
+                                                    <div class="uk-form-controls stint">
+                                                        <input class="uk-input" id="form-stacked-text" type="text" value="NGN 3,000,000.00" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="uk-form-horizontal">
+                                                    <label class="uk-form-label" for="form-stacked-text">Budget Source:</label>
+                                                    <div class="uk-form-controls stint">
+                                                        <input class="uk-input" id="form-stacked-text" type="text" value="Some text..." disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class='uk-grid-collapse uk-child-width-1-1' uk-grid>
+                                    <div>
+                                        <div class='red'>
+                                            <h5 class='uk-text-bold'>Tender</h5>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class='uk-grid-collapse uk-child-width-1-1@s uk-form-horizontal' uk-grid>
+                                            <div>
+                                                <div class="">
+                                                    <label class="uk-form-label" for="form-stacked-text">Budget Amount:</label>
+                                                    <div class="uk-form-controls stint">
+                                                        <input class="uk-input" id="form-stacked-text" type="text" value="NGN 3,000,000.00" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="">
+                                                    <label class="uk-form-label" for="form-stacked-text">Budget Source:</label>
+                                                    <div class="uk-form-controls stint">
+                                                        <input class="uk-input" id="form-stacked-text" type="text" value="Some text..." disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='awards'>
+                                <div>
+                                    <div class=' uk-child-width-1-1'>
+                                        <div class='red'>
+                                            <h5 class='uk-text-bold'>Award(s)</h5>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <ul uk-accordion>
+                                        <li>
+                                            <a class="uk-accordion-title" href="#">View Award List</a>
+                                            <div class="uk-accordion-content">
+                                                <div>
+                                                    <div class="uk-list uk-grid-small uk-child-width-1-2@s" uk-grid>
+                                                        <div>
+                                                            <fieldset>
+                                                                <legend>1</legend>
+                                                                <div>
+                                                                    <div class="uk-form-stacked">
+                                                                        <label class="uk-form-label" for="form-stacked-text">Supplier:</label>
+                                                                        <div class="uk-form-controls stint">
+                                                                            <input class="uk-input" id="form-stacked-text" type="text" value="sandtech corp" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="uk-form-stacked">
+                                                                        <label class="uk-form-label" for="form-stacked-text">Amount:</label>
+                                                                        <div class="uk-form-controls stint">
+                                                                            <input class="uk-input" id="form-stacked-text" type="text" value="NGN 3,000,000.00" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div>
+                                                            <fieldset>
+                                                                <legend>2</legend>
+                                                                <div>
+                                                                    <div class="uk-form-stacked">
+                                                                        <label class="uk-form-label" for="form-stacked-text">Supplier:</label>
+                                                                        <div class="uk-form-controls stint">
+                                                                            <input class="uk-input" id="form-stacked-text" type="text" value="Kachi & sons" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="uk-form-stacked">
+                                                                        <label class="uk-form-label" for="form-stacked-text">Amount:</label>
+                                                                        <div class="uk-form-controls stint">
+                                                                            <input class="uk-input" id="form-stacked-text" type="text" value="NGN 3,000,000.00" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div>
+                                                            <fieldset>
+                                                                <legend>3</legend>
+                                                                <div>
+                                                                    <div class="uk-form-stacked">
+                                                                        <label class="uk-form-label" for="form-stacked-text">Supplier:</label>
+                                                                        <div class="uk-form-controls stint">
+                                                                            <input class="uk-input" id="form-stacked-text" type="text" value="Nnenna Money Laundry mat" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="uk-form-stacked">
+                                                                        <label class="uk-form-label" for="form-stacked-text">Amount:</label>
+                                                                        <div class="uk-form-controls stint">
+                                                                            <input class="uk-input" id="form-stacked-text" type="text" value="NGN 3,000,000.00" disabled>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <div class='uk-grid-collapse uk-child-width-1-1' uk-grid>
+                                    <div>
+                                        <div class='red'>
+                                            <h5 class='uk-text-bold'>Contract(s)</h5>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class='uk-grid-collapse uk-child-width-1-1@s' uk-grid>
+                                            <ul class="uk-list">
+                                                <li>
+                                                    <div>
+                                                        <div class=" uk-form-horizontal">
+                                                            <label class="uk-form-label" for="form-stacked-text">Contract Amount:</label>
+                                                            <div class="uk-form-controls stint">
+                                                                <input class="uk-input" id="form-stacked-text" type="text" value="NGN 3,000,000.00" disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div>
+                                                        <div class=" uk-form-horizontal">
+                                                            <label class="uk-form-label" for="form-stacked-text">Contract Amount:</label>
+                                                            <div class="uk-form-controls stint">
+                                                                <input class="uk-input" id="form-stacked-text" type="text" value="NGN 3,000,000.00" disabled>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class='uk-grid-collapse uk-child-width-1-1 uk-form-horizontal' uk-grid>
+                                    <div>
+                                        <div class='red'>
+                                            <h5 class='uk-text-bold'>Implementation</h5>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class='uk-grid-collapse uk-child-width-1-1@s' uk-grid>
+                                            <div>
+                                                <div class="">
+                                                    <label class="uk-form-label" for="form-stacked-text">Budget Amount:</label>
+                                                    <div class="uk-form-controls stint">
+                                                        <input class="uk-input" id="form-stacked-text" type="text" value="NGN 3,000,000.00" disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="">
+                                                    <label class="uk-form-label" for="form-stacked-text">Budget Source:</label>
+                                                    <div class="uk-form-controls stint">
+                                                        <input class="uk-input" id="form-stacked-text" type="text" value="Some text..." disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-modal-footer uk-text-right">
+                        <p class='uk-text-center'><a href='file:///C:/Users/ver%20Tingir/Projects/budeshi-2.0/webroot/html/project.html'
+                                target="_blank">View Project break down for all stages</a></p>
+                    </div>
+                </div>
+            </div>
+
+  
+
+</body>
+
+</html>
